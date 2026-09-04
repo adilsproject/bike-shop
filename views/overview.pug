@@ -1,0 +1,50 @@
+extends base
+
+block content
+    main.main
+        .card-container
+            each bike in bikes
+                .card
+                    .card__header
+                        .card__picture
+                            .card__picture-overlay &nbsp;
+                            img.card__picture-img(src=`img/tours/${bike.imagesCover}`, alt=`${bike.fullName}`)
+
+                        h3.heading-tertirary
+                            span= bike.fullName
+
+                    .card__details
+                        h4.card__sub-heading= `${bike.category}-bike`
+                        p.card__text= bike.summary
+
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href="/img/icons.svg#icon-map-pin")
+                            span=bike.startLocation.description
+
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href="/img/icons.svg#icon-calendar")
+                            span= `${bike.weight}-KG`
+
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href="/img/icons.svg#icon-flag")
+                            span= `Color: ${bike.color}`
+
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href="/img/icons.svg#icon-user")
+                            span= `Size:${bike.size}`
+
+                    .card__footer
+                        p
+                            span.card__footer-value= `price: $${bike.price}`
+                            span.card__footer-text 
+
+                        p.card__ratings
+                            span.card__footer-value= bike.ratingsAverage
+                            span.card__footer-text= `rating${bike.ratingsQuantity}`
+
+
+                        a.btn.btn--green.btn--small(href=`/bike/${bike.slug}`) Details
