@@ -34,9 +34,9 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
     ],
   });
 
-  console.log('SESSION ID:', session.id);
-  console.log('SESSION URL:', session.url);
-  console.log('LIVEMODE:', session.livemode);
+  // console.log('SESSION ID:', session.id);
+  // console.log('SESSION URL:', session.url);
+  // console.log('LIVEMODE:', session.livemode);
 
   // 3) Create session as response
   res.status(200).json({

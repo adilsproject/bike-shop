@@ -18,7 +18,7 @@ exports.getOverview = catchAsync(async (req, res, next) => {
 });
 
 exports.getBike = catchAsync(async (req, res, next) => {
-  console.log('SLUG:', req.params.slug);
+  // console.log('SLUG:', req.params.slug);
   //1) get the data, for the requested tour
   const bike = await Bike.findOne({ slug: req.params.slug }).populate({
     path: 'reviews',
