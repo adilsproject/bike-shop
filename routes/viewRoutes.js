@@ -12,6 +12,7 @@ router.get(
   viewsController.getOverview,
 );
 router.get('/bike/:slug', authController.isLoggedIn, viewsController.getBike);
+router.get('/signup', viewsController.getSignupForm);
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
 router.get('/me', authController.protect, viewsController.getAccount);
 router.get('/my-bikes', authController.protect, viewsController.getMyBikes);

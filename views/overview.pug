@@ -19,12 +19,12 @@ block content
 
                         .card__data
                             svg.card__icon
-                                use(xlink:href="/img/icons.svg#icon-map-pin")
-                            span=bike.startLocation.description
+                                use(xlink:href="/img/icons.svg#icon-tag")
+                            span=bike.brand
 
                         .card__data
                             svg.card__icon
-                                use(xlink:href="/img/icons.svg#icon-calendar")
+                                use(xlink:href="/img/icons.svg#icon-anchor")
                             span= `${bike.weight}-KG`
 
                         .card__data
@@ -34,7 +34,7 @@ block content
 
                         .card__data
                             svg.card__icon
-                                use(xlink:href="/img/icons.svg#icon-user")
+                                use(xlink:href="/img/icons.svg#icon-maximize-2")
                             span= `Size:${bike.size}`
 
                     .card__footer
@@ -44,7 +44,7 @@ block content
 
                         p.card__ratings
                             span.card__footer-value= bike.ratingsAverage
-                            span.card__footer-text= `rating${bike.ratingsQuantity}`
+                            span.card__footer-text= ` rating (${bike.ratingsQuantity})`
 
 
                         a.btn.btn--green.btn--small(href=`/bike/${bike.slug}`) Details

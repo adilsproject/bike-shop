@@ -25,13 +25,13 @@ block content
             .heading-box__group
                 .heading-box__detail
                     svg.heading-box__icon
-                        use(xlink:href="/img/icons.svg#icon-clock")
-                    span.heading-box__text= `${bike.weight}-kg`
+                        use(xlink:href="/img/icons.svg#icon-anchor")
+                    span.heading-box__text= `${bike.weight}kg`
 
                 .heading-box__detail
                     svg.heading-box__icon
-                        use(xlink:href="/img/icons.svg#icon-map-pin")
-                    span.heading-box__text= bike.startLocation.description
+                        use(xlink:href="/img/icons.svg#icon-tag")
+                    span.heading-box__text= bike.brand
 
     section.section-description
         .overview-box
@@ -39,21 +39,11 @@ block content
                 .overview-box__group
                     h2.heading-secondary.ma-bt-lg Quick facts
 
-                    +overviewBox('Category', bike.category, 'calendar')
-                    +overviewBox('Size',`${bike.size}`, 'trending-up')
-                    +overviewBox('Color',`${bike.color}`, 'user')
-                    +overviewBox('Weight',`${bike.weight}-kg`, 'calendar')
+                    +overviewBox('Category', bike.category, 'grid')
+                    +overviewBox('Size',`${bike.size}`, 'maximize-2')
+                    +overviewBox('Color',`${bike.color}`, 'flag')
+                    +overviewBox('Weight',`${bike.weight}kg`, 'anchor')
                     +overviewBox('Rating',`${bike.ratingsAverage} / 5`, 'star')
-
-                .overview-box__group
-                    h2.heading-secondary.ma-bt-lg Your tour guides
-
-                    //- each seller in bike.sellers
-
-                    //- .overview-box__detail
-                    //-     img.overview-box__img(src=`/img/users/${sellers.photo}`, alt=`${sellers.name}`)
-                    //-     span.overview-box__label= sellers.role
-                    //-     span.overview-box__text= sellers.name
 
         .description-box
             h2.heading-secondary.ma-bt-lg= `About the ${bike.fullName} bike`
@@ -71,14 +61,33 @@ block content
                     class=`picture-box__img--${i + 1}`
                 )
 
-    section.section-map
-        #map(data-location=`${JSON.stringify(bike.shopLocation)}`)
-
     section.section-reviews
         .reviews
             each review in bike.reviews
                 +reviewCard(review)
+            
+        section.review-form
 
+            form.form.form--review(data-bike-id=`${bike.id}`)
+                .form__group
+                    label.form__label(for="review") Your review
+                    textarea.form__input(
+                        id="review"
+                        name="review"
+                        placeholder="Write your review..."
+                        required
+                    )
+
+                .form__group
+                    label.form__label(for="rating") Rating
+                    select.form__input(id="rating" name="rating" required)
+                        option(value="5") 5 stars
+                        option(value="4") 4 stars
+                        option(value="3") 3 stars
+                        option(value="2") 2 stars
+                        option(value="1") 1 star
+
+                button.btn.btn--green#submit-review(type="submit") Submit review
 
     section.section-cta
         .cta
@@ -96,5 +105,5 @@ block content
                 if user
                     button.btn.btn--green.span-all-rows#buy-bike(data-bike-id=`${bike.id}`) Buy the bike now!
                 else
-                    a.button.btn.btn--green.span-all-rows(href='/login') Log in to buy this bike!
+                    a.button.btn.btn--green.span-all-rows(href='/login') buy this bike
 
