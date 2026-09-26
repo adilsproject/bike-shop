@@ -84,13 +84,6 @@ if (userPasswordForm)
     document.getElementById('password-confirm').value = '';
   });
 
-// if (buyBtn)
-//   buyBtn.addEventListener('click', (e) => {
-//     e.target.textContent = 'Processing...';
-//     const bikeId = e.target.dataset.bikeId;
-//     buyBike(bikeId);
-//   });
-
 if (buyBtn) {
   buyBtn.addEventListener('click', (e) => {
     e.target.textContent = 'Processing...';

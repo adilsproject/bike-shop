@@ -30,7 +30,6 @@ buyingSchema.pre(/^find/, function (next) {
     path: 'bike',
     select: 'fullName',
   });
-  // next();
 });
 
 const Buying = mongoose.model('Buying', buyingSchema);

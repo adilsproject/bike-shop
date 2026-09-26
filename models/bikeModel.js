@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 const validator = require('validator');
-// const User = require('./../models/userModel');
 
 const bikeSchema = new mongoose.Schema(
   {
@@ -140,13 +139,6 @@ bikeSchema.pre('save', function (next) {
   this.slug = slugify(`${this.brand} ${this.model}`, { lower: true });
 });
 
-// bikeSchema.pre('save', async function (next) {
-//   const sellersPromises = this.sellers.map(
-//     async (id) => await User.findById(id),
-//   );
-//   this.sellers = await Promise.all(sellersPromises);
-// });
-
 //query middleware
 bikeSchema.pre(/^find/, function (next) {
   this.find({ secretBike: { $ne: true } });
@@ -164,16 +156,8 @@ bikeSchema.pre(/^find/, function (next) {
 bikeSchema.post(/^find/, function (docs, next) {
   console.log(`Query took ${Date.now() - this.start} milliseconds!`);
 
-  // console.log(docs);
   next();
 });
-
-// AGGREGATION MIDDLEWARE
-// bikeSchema.pre('aggregate', function (next) {
-//   this.pipeline().unshift({ $match: { secretBike: { $ne: true } } });
-
-//   console.log(this.pipeline());
-// });
 
 const Bike = mongoose.model('Bike', bikeSchema);
 

@@ -105,34 +105,6 @@ exports.getBikeStats = catchAsync(async (req, res, next) => {
   });
 });
 
-// exports.getBikesWithin = catchAsync(async (req, res, next) => {
-//   const { distance, latlng, unit } = req.params;
-//   const [lat, lng] = latlng.split(',');
-
-//   const radius = unit === 'mi' ? distance / 3963.2 : distance / 6378.1;
-
-//   if (!lat || !lng) {
-//     return next(
-//       new AppError(
-//         'Please provide latitutr and longitude in the format lar,lng',
-//         400,
-//       ),
-//     );
-//   }
-
-//   const bikes = await Bike.find({
-//     startLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius] } },
-//   });
-
-//   res.status(200).json({
-//     status: 'success',
-//     results: bikes.length,
-//     data: {
-//       data: bikes,
-//     },
-//   });
-// });
-
 exports.getBikesWithin = catchAsync(async (req, res, next) => {
   const { distance, latlng, unit } = req.params;
 

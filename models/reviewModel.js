@@ -1,5 +1,3 @@
-//review / rating / createdAt/ ref to Bike/ ref to user
-
 const mongoose = require('mongoose');
 const Bike = require('./bikeModel');
 
